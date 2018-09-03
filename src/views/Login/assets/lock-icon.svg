@@ -1,0 +1,7 @@
+
+<svg width="44px" height="64px" viewBox="0 0 44 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="lock" transform="translate(1.000000, 1.000000)" stroke="#FFFFFF" stroke-width="2" fill="none" fill-rule="evenodd">
+      <polygon id="rectangle" points="0 26 42 26 42 62 0 62"></polygon>
+      <path d="M4,26 L4,16.4726683 C4,7.37506483 11.6111593,0 21,0 C30.3888407,0 38,7.37506483 38,16.4726683 L38,26" id="hoop"></path>
+  </g>
+</svg>
