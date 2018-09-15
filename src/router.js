@@ -15,34 +15,39 @@ const router = new Router({
     },
     {
       path: '/',
-      component: () => import('@/layouts/MainLayout/MainLayout'),
-      meta: { accessLevel: 1 },
-      children: [
-        {
-          path: '/',
-          name: 'home',
-          component: () => import('@/views/Home/Home'),
-          meta: { accessLevel: 1 }
-        },
-        {
-          path: '/projects',
-          name: 'projects',
-          component: () => import('@/views/Projects/Projects'),
-          meta: { accessLevel: 1 }
-        },
-        {
-          path: '/gallery',
-          name: 'gallery',
-          component: () => import('@/views/Gallery/Gallery'),
-          meta: { accessLevel: 1 }
-        },
-        {
-          path: '/contact',
-          name: 'contact',
-          component: () => import('@/views/Contact/Contact'),
-          meta: { accessLevel: 1 }
-        }
-      ]
+      name: 'home',
+      component: () => import('@/views/Home/Home'),
+      meta: {
+        layout: 'Main',
+        accessLevel: 1
+      }
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: () => import('@/views/Projects/Projects'),
+      meta: {
+        layout: 'Main',
+        accessLevel: 1
+      }
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: () => import('@/views/Gallery/Gallery'),
+      meta: {
+        layout: 'Main',
+        accessLevel: 1
+      }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('@/views/Contact/Contact'),
+      meta: {
+        layout: 'Main',
+        accessLevel: 1
+      }
     },
     {
       path: '/register',

@@ -5,6 +5,11 @@ export const NAV_ITEMS = [
   { text: 'Contact', route: '/contact' }
 ]
 
+export const LAYOUTS = {
+  Default: () => import('@/layouts/DefaultLayout/DefaultLayout'),
+  Main: () => import('@/layouts/MainLayout/MainLayout')
+}
+
 export const TOOLTIPS = {
   'Vue': {
     color: 'green',
