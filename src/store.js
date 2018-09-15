@@ -1,58 +1,54 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import LoginService from '@/services/LoginService'
+import RegisterService from '@/services/RegisterService'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token: localStorage.getItem('token') || null,
-    user: null
+    user: JSON.parse(localStorage.getItem('user')) || null
   },
   mutations: {
-    auth_success (state, token, user) {
-      state.token = token
+    loginSuccess (state, { user }) {
+      localStorage.setItem('user', JSON.stringify(user))
       state.user = user
     },
+    loginFailure (state) {
+      localStorage.removeItem('user')
+      state.user = null
+    },
     logout (state) {
-      state.status = ''
-      state.token = ''
+      localStorage.removeItem('user')
+      state.user = null
     }
   },
   actions: {
-    login ({ commit }, user) {
-      return new Promise((resolve, reject) => {
-        axios({
-          url: '/api/login',
-          data: user,
-          method: 'POST'
+    login ({ commit }, credentials) {
+      return LoginService.post(credentials)
+        .then(res => {
+          const user = res.data
+          commit('loginSuccess', { user })
+          return Promise.resolve(user)
         })
-          .then(res => {
-            const token = res.data.token
-            const user = res.data.user
-            localStorage.setItem('token', token)
-            axios.defaults.headers.common['Authorization'] = token
-            commit('auth_success', token, user)
-            resolve(res)
-          })
-          .catch(err => {
-            localStorage.removeItem('token')
-            reject(err)
-          })
-      })
+        .catch(err => {
+          commit('loginFailure')
+          return Promise.reject(err)
+        })
+    },
+    register ({ commit }, newUser) {
+      return RegisterService.post(newUser)
     },
     logout ({ commit }) {
-      return new Promise((resolve, reject) => {
-        commit('logout')
-        localStorage.removeItem('token')
-        delete axios.defaults.headers.common['Authorization']
-        resolve()
-      })
+      commit('logout')
     }
   },
   getters: {
+    user (state) {
+      return state.user
+    },
     isLoggedIn (state) {
-      return !!state.token
+      return !!state.user
     }
   }
 })

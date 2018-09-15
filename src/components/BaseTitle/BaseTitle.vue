@@ -15,6 +15,8 @@ export default {
 
 <style lang="scss" scoped>
 .base-title {
-  font-size: 1em;
+  font-size: 2em;
+  line-height: 1.5em;
+  margin-bottom: 50px;
 }
 </style>

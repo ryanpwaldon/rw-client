@@ -13,18 +13,20 @@ export default {}
 <style lang="scss" scoped>
 .base-container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   padding: 0 30px;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .base-container-inner {
-  height: 100%;
+  flex: 1;
   width: 100%;
-  max-width: 600px;
-  border-left: var(--color-light-black) solid 1px;
+  min-height: 100%;
+  max-width: 1000px;
   padding: 30px;
+  position: relative;
+  border-left: var(--color-black) solid 1px;
 }
 </style>

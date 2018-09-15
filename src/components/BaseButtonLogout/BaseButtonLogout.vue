@@ -1,6 +1,6 @@
 <template>
-  <div class="base-button-logout">
-    LOGOUT
+  <div class="base-button-logout" @click="logout">
+    Logout
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   methods: {
     logout () {
       this.$store.dispatch('logout')
-        .then(() => this.$router.push('/login'))
+      this.$router.push('/login')
     }
   }
 }
@@ -18,9 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .base-button-logout {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 </style>

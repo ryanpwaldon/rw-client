@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 72">
+  <g id="lock">
+    <polygon id="rectangle" points="6 31 48 31 48 67 6 67 6 31" style="fill: none;stroke: #a0a0a0;stroke-width: 6px"/>
+    <path id="hoop" d="M10,31V21.47267A16.74256,16.74256,0,0,1,27,5,16.74256,16.74256,0,0,1,44,21.47267V31" style="fill: none;stroke: #a0a0a0;stroke-width: 6px"/>
+  </g>
+</svg>

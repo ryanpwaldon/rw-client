@@ -1,21 +1,20 @@
 
 <template>
-  <div class="login">
+  <div class="register">
     <transition-group name="fade">
-      <div class="login-container" v-if="!loading" :key="1">
-        <div class="login-card-container">
-          <div class="login-card-item">
-            <div class="lock-item-container">
-              <img class="lock-item" src="./assets/lock-icon.svg">
-            </div>
-            <BaseInput @input="userName = $event" type="text" placeholder="Username" @keypress.enter.native="userName && password ? login() : null"/>
+      <div class="register-container" v-if="!loading" :key="1">
+        <div class="register-card-container">
+          <div class="register-card-item">
+            <BaseInput @input="userName = $event" type="text" placeholder="Username"/>
             <div class="line"/>
-            <BaseInput @input="password = $event" type="password" placeholder="Password" @keypress.enter.native="userName && password ? login() : null"/>
+            <BaseInput @input="password = $event" type="password" placeholder="New user password"/>
+            <div class="line"/>
+            <BaseInput @input="userAvatar = $event" type="text" placeholder="User avatar (B64)"/>
             <div class="line"/>
             <div
-              :class="{'button-login-item': true, 'enabled': userName && password}"
-              @click="userName && password ? login() : null">
-              Login
+              :class="{'button-register-item': true, 'enabled': canSubmit}"
+              @click="canSubmit ? register() : null">
+              Register
             </div>
           </div>
         </div>
@@ -42,43 +41,53 @@
 </template>
 
 <script>
-import BaseContainer from '@/components/BaseContainer/BaseContainer'
 import BaseInput from '@/components/BaseInput/BaseInput'
 // eslint-disable-next-line
 import DrawSVGPlugin from '@/assets/lib/DrawSVGPlugin'
 import { TweenMax, Linear, Power4 } from 'gsap'
 export default {
-  name: 'login',
+  name: 'register',
   components: {
-    BaseContainer,
     BaseInput
   },
   data () {
     return {
       userName: null,
       password: null,
+      userAvatar: null,
       loading: false
     }
   },
+  computed: {
+    canSubmit () {
+      return (
+        this.userName &&
+        this.password &&
+        this.userAvatar
+      )
+    }
+  },
   methods: {
-    login () {
+    register () {
       const userName = this.userName
       const password = this.password
-      this.onAuthRequest()
-      this.$store.dispatch('login', { userName, password })
-        .then(() => {
-          this.onAuthSuccess()
+      const userAvatar = this.userAvatar
+      this.onRegisterRequest()
+      this.$store.dispatch('register', { userName, password, userAvatar })
+        .then(res => {
+          console.log('User successfully created: ', res)
+          this.onRegisterSuccess()
         })
         .catch(err => {
-          this.onAuthError()
+          this.onRegisterError()
           console.log(err)
         })
     },
-    onAuthRequest () {
+    onRegisterRequest () {
       this.loading = true
       this.$nextTick(this.animateLoader)
     },
-    onAuthSuccess () {
+    onRegisterSuccess () {
       TweenMax.to(this.$refs['loader-item'], 1, {autoAlpha: 0, ease: Power4.easeInOut})
       TweenMax.to(this.$refs['check-item'], 1, {autoAlpha: 1, ease: Power4.easeInOut})
       TweenMax.fromTo(this.$refs['check-stroke'], 1, {drawSVG: '100% 100%'}, {
@@ -86,11 +95,11 @@ export default {
         ease: Power4.easeOut,
         delay: 0.5,
         onComplete: () => {
-          setTimeout(() => this.$router.push('/'), 1000)
+          setTimeout(() => { this.$router.push('/') }, 1000)
         }
       })
     },
-    onAuthError () {
+    onRegisterError () {
       this.userName = null
       this.password = null
       TweenMax.to(this.$refs['loader-item'], 1, {autoAlpha: 0, ease: Power4.easeInOut})
@@ -116,23 +125,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login {
+.register {
   width: 100%;
   height: 100%;
   position: relative;
 }
-.login-container {
+.register-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
 }
-.login-card-container {
+.register-card-container {
   padding: 30px;
   width: 350px;
 }
-.login-card-item {
+.register-card-item {
   width: 100%;
   display: flex;
   align-items: center;
@@ -160,7 +169,7 @@ export default {
   position: relative;
   border-radius: 100px;
 }
-.button-login-item {
+.button-register-item {
   width: calc(100% - 8px);
   margin: auto;
   padding: 12px 10px;

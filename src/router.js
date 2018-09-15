@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/Login/Login'
-import Home from '@/views/Home/Home'
 import store from '@/store'
 
 Vue.use(Router)
@@ -13,31 +11,61 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: () => import('@/views/Login/Login')
     },
     {
       path: '/',
-      name: 'home',
-      component: Home
+      component: () => import('@/layouts/MainLayout/MainLayout'),
+      meta: { accessLevel: 1 },
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: () => import('@/views/Home/Home'),
+          meta: { accessLevel: 1 }
+        },
+        {
+          path: '/projects',
+          name: 'projects',
+          component: () => import('@/views/Projects/Projects'),
+          meta: { accessLevel: 1 }
+        },
+        {
+          path: '/gallery',
+          name: 'gallery',
+          component: () => import('@/views/Gallery/Gallery'),
+          meta: { accessLevel: 1 }
+        },
+        {
+          path: '/contact',
+          name: 'contact',
+          component: () => import('@/views/Contact/Contact'),
+          meta: { accessLevel: 1 }
+        }
+      ]
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/Register/Register'),
+      meta: { accessLevel: 0 }
     },
     {
       path: '*',
       redirect: '/'
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('./views/About.vue')
-    // }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  if (!store.state.authenticated && to.name !== 'login') router.push('/login')
-  next()
+  const routeAccessLevel = to.meta.accessLevel
+  const userAccessLevel = store.getters.user && store.getters.user.accessLevel
+  if (typeof routeAccessLevel === 'number') {
+    if (typeof userAccessLevel === 'number' && userAccessLevel <= routeAccessLevel) return next()
+    return next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

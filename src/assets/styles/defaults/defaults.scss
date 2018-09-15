@@ -5,7 +5,7 @@
 }
 
 html {
-  background: var(--color-black);
+  background: var(--color-white);
 }
 
 html, body, #app {
@@ -14,11 +14,18 @@ html, body, #app {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Arial;
-  color: var(--color-white);
-  letter-spacing: 0.1em;
+  font-family: 'Circular Std';
+  color: var(--color-black);
 }
 
 a {
   text-decoration: unset;
+  color: unset;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: var(--transition-default);
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

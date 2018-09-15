@@ -1,15 +1,12 @@
 <template>
   <div id="app">
-    <router-view/>
-    <BaseButtonLogout v-if="$route.name !== 'login'"/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
-import BaseButtonLogout from '@/components/BaseButtonLogout/BaseButtonLogout'
 export default {
-  components: {
-    BaseButtonLogout
-  }
 }
 </script>
