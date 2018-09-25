@@ -1,0 +1,276 @@
+{
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5123,
+            "count" : 16902,
+            "max" : [
+                4153
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4154,
+            "max" : [
+                8.709017753601074,
+                43.545066833496094,
+                10.996707916259766
+            ],
+            "min" : [
+                -8.709015846252441,
+                -43.545066833496094,
+                -109.40740966796875
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 5643,
+            "max" : [
+                2407
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 2408,
+            "max" : [
+                15.292924880981445,
+                15.292930603027344,
+                49.15721130371094
+            ],
+            "min" : [
+                -15.292924880981445,
+                -15.129807472229004,
+                9.62860107421875
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5123,
+            "count" : 16044,
+            "max" : [
+                3535
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 3536,
+            "max" : [
+                20.251873016357422,
+                50.00156021118164,
+                49.157203674316406
+            ],
+            "min" : [
+                -20.251880645751953,
+                -50.00152587890625,
+                -39.794769287109375
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5121,
+            "count" : 54,
+            "max" : [
+                31
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 32,
+            "max" : [
+                7.557314872741699,
+                -25.85810089111328,
+                -28.953609466552734
+            ],
+            "min" : [
+                -7.557314872741699,
+                -29.855445861816406,
+                -37.71146774291992
+            ],
+            "type" : "VEC3"
+        }
+    ],
+    "asset" : {
+        "generator" : "Khronos Blender glTF 2.0 exporter",
+        "version" : "2.0"
+    },
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 33804,
+            "byteOffset" : 0,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 49848,
+            "byteOffset" : 33804,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 11286,
+            "byteOffset" : 83652,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28896,
+            "byteOffset" : 94940,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 32088,
+            "byteOffset" : 123836,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 42432,
+            "byteOffset" : 155924,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 54,
+            "byteOffset" : 198356,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 384,
+            "byteOffset" : 198412,
+            "target" : 34962
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 198796,
+            "uri" : "lock.bin"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Steel",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 1
+                    },
+                    "indices" : 0
+                }
+            ]
+        },
+        {
+            "name" : "KeyHole",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 3
+                    },
+                    "indices" : 2
+                }
+            ]
+        },
+        {
+            "name" : "PadLock",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 5
+                    },
+                    "indices" : 4
+                }
+            ]
+        },
+        {
+            "name" : "LockTooth",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 7
+                    },
+                    "indices" : 6
+                }
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 1,
+            "name" : "KeyHole",
+            "rotation" : [
+                0.7071068286895752,
+                0.0,
+                -0.0,
+                0.7071067094802856
+            ]
+        },
+        {
+            "mesh" : 3,
+            "name" : "LockTooth",
+            "rotation" : [
+                0.7071068286895752,
+                0.0,
+                -0.0,
+                0.7071067094802856
+            ]
+        },
+        {
+            "mesh" : 2,
+            "name" : "PadLock",
+            "rotation" : [
+                0.7071068286895752,
+                0.0,
+                -0.0,
+                0.7071067094802856
+            ]
+        },
+        {
+            "mesh" : 0,
+            "name" : "Steel",
+            "rotation" : [
+                0.7071068286895752,
+                0.0,
+                -0.0,
+                0.7071067094802856
+            ]
+        }
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                3,
+                1,
+                2
+            ]
+        }
+    ]
+}

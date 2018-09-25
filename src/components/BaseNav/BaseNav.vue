@@ -2,7 +2,7 @@
   <div class="base-nav">
     <div class="nav-container">
       <div class="nav-group-left">
-        <router-link class="nav-item" :to="navItem.route" v-for="(navItem, index) in navItems" :key="index">
+        <router-link class="nav-item" :to="navItem.path" v-for="(navItem, index) in navItems" :key="index">
           {{ navItem.text }}
         </router-link>
       </div>
@@ -36,7 +36,7 @@ export default {
   width: 100%;
 }
 .nav-container {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,17 +52,13 @@ export default {
   align-items: center;
 }
 .nav-item {
-  margin-right: 20px;
-  padding: 5px 10px;
+  margin-right: 40px;
   cursor: pointer;
-  border-radius: 3px;
   transition: var(--transition-default);
-  background: var(--color-transparent);
   color: var(--color-black);
   &.router-link-exact-active,
   &:hover {
-    background: var(--color-blue);
-    color: var(--color-white);
+    color: var(--color-blue);
   }
   &:last-of-type {
     margin: 0;

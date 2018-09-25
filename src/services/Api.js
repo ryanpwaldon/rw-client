@@ -5,7 +5,7 @@ export default () => {
   return axios.create({
     baseURL: process.env.VUE_APP_API_BASE_URL,
     headers: {
-      Authorization: store.state.user ? `Bearer ${store.state.user.token}` : ''
+      Authorization: store.getters.user ? `Bearer ${store.getters.user.token}` : ''
     }
   })
 }

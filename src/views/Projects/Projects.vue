@@ -1,11 +1,13 @@
 <template>
   <div class="projects">
-    <BaseTitle text="Projects"/>
-    <div class="projects-container">
-      <div class="project-item" v-for="(project, index) in projects" :key="index">
-        <BaseSubtitle :text="project.title"/>
-        <BaseParagraph>{{ project.description }}</BaseParagraph>
-      </div>
+    <div class="columns-container">
+      <div ref="column-item" class="column-item" v-for="n in columns" :key="n"/>
+    </div>
+    <BaseTitle class="title-item" v-place-title text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/>
+    <div class="project-item" v-masonarise v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
+      <BaseBrowserMockup :image-path="project.imagePath"/>
+      <div class="project-title" v-html="project.title"/>
+      <div class="project-subtitle" v-html="project.description"/>
     </div>
   </div>
 </template>
@@ -14,17 +16,46 @@
 import BaseTitle from '@/components/BaseTitle/BaseTitle'
 import BaseSubtitle from '@/components/BaseSubtitle/BaseSubtitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
+import BaseBrowserMockup from '@/components/BaseBrowserMockup/BaseBrowserMockup'
+import imagesLoaded from 'imagesloaded'
+import { TweenMax, Power4 } from 'gsap'
 import { PROJECTS } from '@/constants'
 export default {
   name: 'projects',
   components: {
     BaseTitle,
     BaseSubtitle,
-    BaseParagraph
+    BaseParagraph,
+    BaseBrowserMockup
   },
   data () {
     return {
-      projects: PROJECTS
+      projects: PROJECTS,
+      columns: 2
+    }
+  },
+  directives: {
+    masonarise: {
+      inserted (el, binding, vnode) {
+        el.style.display = 'none'
+        el.style.visibility = 'hidden'
+        imagesLoaded(el, () => {
+          // find column with shortest height (or if equal, the left most column)
+          const suitableColumn = vnode.context.$refs['column-item'].reduce((acc, column) => {
+            if (vnode.key === 2) console.log(acc.children.length, column.children.length)
+            if (column.offsetHeight === acc.offsetHeight) return acc
+            return column.offsetHeight < acc.offsetHeight ? column : acc
+          })
+          suitableColumn.appendChild(el)
+          el.style.display = 'block'
+          TweenMax.to(el, 0.5, {autoAlpha: 1, ease: Power4.easeInOut})
+        })
+      }
+    },
+    placeTitle: {
+      inserted (el, binding, vnode) {
+        vnode.context.$refs['column-item'][0].appendChild(el)
+      }
     }
   }
 }
@@ -35,23 +66,34 @@ export default {
   width: 100%;
   height: 100%;
 }
-.projects-container {
+.columns-container {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
 }
-.projects /deep/ .base-paragraph {
-  margin-bottom: 0px;
+.column-item {
+  width: 45%;
+}
+.title-item {
+  margin-bottom: 100px;
 }
 .project-item {
-  padding: 20px;
-  margin-bottom: 50px;
-  border-radius: 3px;
-  transition: var(--transition-default);
-  background: var(--color-lighter-gray);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
   cursor: pointer;
 }
-.project-item:hover {
-  box-shadow: 0 18px 35px rgba(50,50,93,.1), 0 8px 15px rgba(0,0,0,.07);
+.base-browser-mockup {
+  margin-bottom: 20px;
+}
+.project-title {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+.project-subtitle {
+  font-size: 1em;
+  opacity: 0.5;
 }
 </style>

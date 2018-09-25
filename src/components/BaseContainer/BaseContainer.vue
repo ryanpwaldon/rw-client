@@ -14,7 +14,7 @@ export default {}
 .base-container {
   width: 100%;
   min-height: 100%;
-  padding: 0 30px;
+  padding: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,8 +25,6 @@ export default {}
   width: 100%;
   min-height: 100%;
   max-width: 1000px;
-  padding: 30px;
   position: relative;
-  border-left: var(--color-black) solid 1px;
 }
 </style>

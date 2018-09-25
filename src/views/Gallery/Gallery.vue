@@ -3,7 +3,7 @@
     <div class="gallery-container">
       <BaseSubtitle text="Interactive grid"/>
       <div class="gallery-object">
-        <!-- <RaycasterGrid/> -->
+        <Lock/>
       </div>
     </div>
   </div>
@@ -11,10 +11,14 @@
 
 <script>
 import RaycasterGrid from '@/views/Gallery/components/RaycasterGrid/RaycasterGrid'
+import Lock from '@/views/Gallery/components/Lock/Lock'
+import BaseSubtitle from '@/components/BaseSubtitle/BaseSubtitle'
 export default {
   name: 'gallery',
   components: {
-    RaycasterGrid
+    RaycasterGrid,
+    BaseSubtitle,
+    Lock
   }
 }
 </script>

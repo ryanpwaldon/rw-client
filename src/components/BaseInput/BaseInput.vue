@@ -23,6 +23,7 @@ export default {
 .base-input {
   width: 100%;
   position: relative;
+  * { user-select: auto }
 }
 .input-item {
   border-radius: 3px;

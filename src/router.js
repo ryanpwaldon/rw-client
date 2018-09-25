@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
+import projectRoutes from '@/views/Projects/routes/routes'
 
 Vue.use(Router)
 
@@ -31,6 +32,7 @@ const router = new Router({
         accessLevel: 1
       }
     },
+    ...projectRoutes,
     {
       path: '/gallery',
       name: 'gallery',

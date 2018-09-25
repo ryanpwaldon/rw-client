@@ -14,7 +14,7 @@ export default {
   font-size: 1em;
   line-height: 1.4em;
   color: var(--color-black);
-  display: block;
+  display: inline-block;
   max-width: 600px;
   margin-bottom: 50px;
 }
