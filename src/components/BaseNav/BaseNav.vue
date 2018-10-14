@@ -54,11 +54,13 @@ export default {
 .nav-item {
   margin-right: 40px;
   cursor: pointer;
-  transition: var(--transition-default);
   color: var(--color-black);
+  transition: var(--default-transition);
+  border-bottom: solid 1px rgba(0, 0, 0, 0);
+  padding: 5px 0;
   &.router-link-exact-active,
   &:hover {
-    color: var(--color-blue);
+    border-bottom: solid 1px var(--color-black);
   }
   &:last-of-type {
     margin: 0;

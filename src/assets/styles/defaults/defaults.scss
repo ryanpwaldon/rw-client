@@ -25,7 +25,7 @@ a {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: var(--transition-default);
+  transition: var(--default-transition);
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;

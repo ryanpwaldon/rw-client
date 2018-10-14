@@ -173,7 +173,7 @@ export default {
   border-radius: 3px;
   cursor: not-allowed;
   user-select: none;
-  transition: var(--transition-default);
+  transition: var(--default-transition);
 
   &.enabled {
     cursor: pointer;

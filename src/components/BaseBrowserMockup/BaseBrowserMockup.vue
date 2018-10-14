@@ -27,8 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .browser-container {
-  box-shadow: 8px 18px 50px rgba(39, 44, 49, .1), 1px 6px 12px rgba(39, 44, 49, .1);
-  border-radius: 5px;
+  border: solid var(--color-light-gray) 1px;
   overflow: hidden;
 }
 .browser-header {
@@ -38,7 +37,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 15px;
 }
 .browser-icon-container {
   display: flex;
@@ -62,12 +61,12 @@ export default {
 }
 .browser-content {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
 }
 .browser-image {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 </style>

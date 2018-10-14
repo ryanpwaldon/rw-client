@@ -40,7 +40,7 @@ export default {
   opacity: 1;
 }
 .tooltip-container {
-  transition: var(--transition-default);
+  transition: var(--default-transition);
   position: absolute;
   width: 300px;
   opacity: 0;

@@ -7,7 +7,7 @@
     <div class="project-item" v-masonarise v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
       <BaseBrowserMockup :image-path="project.imagePath"/>
       <div class="project-title" v-html="project.title"/>
-      <div class="project-subtitle" v-html="project.description"/>
+      <div class="project-subtitle" v-html="project.subtitle"/>
     </div>
   </div>
 </template>

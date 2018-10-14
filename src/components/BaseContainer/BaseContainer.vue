@@ -14,7 +14,7 @@ export default {}
 .base-container {
   width: 100%;
   min-height: 100%;
-  padding: 30px;
+  padding: 30px 30px 100px;
   position: relative;
   display: flex;
   flex-direction: column;

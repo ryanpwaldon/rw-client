@@ -32,7 +32,7 @@ export default {
   width: 100%;
   color: var(--color-black);
   border-radius: 3px;
-  transition: var(--transition-default);
+  transition: var(--default-transition);
 
   &::placeholder {
     color: var(--color-gray);
