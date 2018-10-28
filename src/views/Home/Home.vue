@@ -2,7 +2,7 @@
   <div class="home">
     <div class="intro-container">
       <div class="intro-content">
-        <BaseTitle :text="`👋 Hi, <span class='capitalize'>${$store.getters.user.userName}</span>`"/>
+        <BaseTitle :text="`👋 Hi, <span class='capitalize'>${$store.getters.user.userName}</span>.`"/>
         <BaseParagraph>
           I build full stack web applications with <span class="highlight">Vue.js</span>, <span class="highlight">Node + Express</span>, and <span class="highlight">MongoDB</span>. I've built websites for <span class="highlight">Fairfax</span>, <span class="highlight">Qantas</span>, <span class="highlight">Raine & Horne</span>, and <span class="highlight">HCF</span>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </BaseParagraph>
@@ -18,12 +18,12 @@
         </BaseParagraph> -->
       </div>
     </div>
-    <div class="hr"/>
+    <!-- <div class="hr"/>
     <div class="grid-container">
       <div class="grid-item" v-for="(tool, index) in tools" :key="index">
         <div class="icon-item" :style="{backgroundImage: `url(${tool.iconPath})`}"/>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -63,13 +63,14 @@ export default {
   flex-direction: column;
 }
 .base-title {
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   /deep/ .capitalize {
     text-transform: capitalize;
   }
 }
 .base-paragraph {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  width: 60%;
 }
 .base-button-arrow {
   align-self: flex-start;
@@ -98,14 +99,14 @@ export default {
   border-right: 1px solid var(--color-light-gray);
   border-bottom: 1px solid var(--color-light-gray);
 }
-/deep/ .highlight {
-  display: inline-block;
-  color: var(--color-blue);
-  background: white;
-  padding: 2px 2px;
-  border: solid 1px var(--color-light-gray);
-  border-radius: 3px;
-}
+// /deep/ .highlight {
+//   display: inline-block;
+//   color: var(--color-blue);
+//   background: white;
+//   padding: 2px 2px;
+//   border: solid 1px var(--color-light-gray);
+//   border-radius: 3px;
+// }
 /deep/ .base-paragraph {
   line-height: 1.6em;
 }

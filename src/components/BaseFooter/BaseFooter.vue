@@ -2,7 +2,7 @@
   <div class="base-footer">
     <div class="footer-container">
       <div class="content-item">
-        View this page on github.
+        View this site on github.
       </div>
     </div>
   </div>
