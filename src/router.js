@@ -19,7 +19,7 @@ const router = new Router({
       name: 'home',
       component: () => import('@/views/Home/Home'),
       meta: {
-        layout: 'Main',
+        layout: 'User',
         accessLevel: 1
       }
     },
@@ -28,26 +28,17 @@ const router = new Router({
       name: 'projects',
       component: () => import('@/views/Projects/Projects'),
       meta: {
-        layout: 'Main',
+        layout: 'User',
         accessLevel: 1
       }
     },
     ...projectRoutes,
     {
-      path: '/gallery',
-      name: 'gallery',
-      component: () => import('@/views/Gallery/Gallery'),
-      meta: {
-        layout: 'Main',
-        accessLevel: 1
-      }
-    },
-    {
       path: '/contact',
       name: 'contact',
       component: () => import('@/views/Contact/Contact'),
       meta: {
-        layout: 'Main',
+        layout: 'User',
         accessLevel: 1
       }
     },

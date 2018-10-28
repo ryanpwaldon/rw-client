@@ -1,24 +1,27 @@
 <template>
   <div class="home">
     <div class="intro-container">
-      <div class="intro-content-container">
-        <BaseTitle :text="`
-          Hi 👋 <span class='capitalize'>${$store.getters.user.userName}</span>,<br>
-          Welcome to the works of Ryan Waldon.
-        `"/>
+      <div class="intro-content">
+        <BaseTitle :text="`👋 Hi, <span class='capitalize'>${$store.getters.user.userName}</span>`"/>
         <BaseParagraph>
-          Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Angular aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. I have a passion for building web applications, with a bonus specialty in web animaition.
+          I build full stack web applications with <span class="highlight">Vue.js</span>, <span class="highlight">Node + Express</span>, and <span class="highlight">MongoDB</span>. I've built websites for <span class="highlight">Fairfax</span>, <span class="highlight">Qantas</span>, <span class="highlight">Raine & Horne</span>, and <span class="highlight">HCF</span>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </BaseParagraph>
+        <BaseButtonArrow path="/projects">
+          See projects
+        </BaseButtonArrow>
+        <!-- <br><br>
+        <BaseParagraph>
+          Essentials:<br>
+          - I typically work with Vue, Node / Express, and Mongo<br>
+          - This preference is not dependant upon any personal biases<br>
+          - Happy to work with and learn any technology (including react)<br>
+        </BaseParagraph> -->
       </div>
     </div>
-    <div class="skills-container">
-      <BaseTitle text="Core skills"/>
-      <div class="skill-items">
-        <BaseSkill name="Vue"/>
-        <BaseSkill name="Node + Express"/>
-        <BaseSkill name="MongoDB"/>
-        <BaseSkill name="Angular"/>
-        <BaseSkill name="GSAP"/>
+    <div class="hr"/>
+    <div class="grid-container">
+      <div class="grid-item" v-for="(tool, index) in tools" :key="index">
+        <div class="icon-item" :style="{backgroundImage: `url(${tool.iconPath})`}"/>
       </div>
     </div>
   </div>
@@ -26,16 +29,20 @@
 
 <script>
 import BaseTitle from '@/components/BaseTitle/BaseTitle'
-import BaseSubtitle from '@/components/BaseSubtitle/BaseSubtitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
-import BaseSkill from '@/components/BaseSkill/BaseSkill'
+import BaseButtonArrow from '@/components/BaseButtonArrow/BaseButtonArrow'
+import { TOOLS } from '@/constants'
 export default {
   name: 'home',
   components: {
     BaseTitle,
     BaseParagraph,
-    BaseSubtitle,
-    BaseSkill
+    BaseButtonArrow
+  },
+  data () {
+    return {
+      tools: TOOLS
+    }
   }
 }
 </script>
@@ -44,33 +51,62 @@ export default {
 .home {
   width: 100%;
   height: 100%;
-  text-align: center;
 }
 .intro-container {
   display: flex;
   position: relative;
-  justify-content: center;
-  margin-bottom: 100px;
 }
-.base-title /deep/ .capitalize {
-  text-transform: capitalize;
+.intro-content {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+}
+.base-title {
+  margin-bottom: 10px;
+  /deep/ .capitalize {
+    text-transform: capitalize;
+  }
 }
 .base-paragraph {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
-.skills-container {
-  text-align: center;
+.base-button-arrow {
+  align-self: flex-start;
 }
-.skill-items {
+.hr {
+  width: 100%;
+  height: 1px;
+  background: var(--color-light-gray);
+  margin: 80px 0;
+}
+.grid-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: -10px;
-  max-width: 360px;
-  margin: auto;
-  & > * {
-    margin: 10px;
-  }
+  flex-flow: row wrap;
+  border-top: 1px solid var(--color-light-gray);
+  border-left: 1px solid var(--color-light-gray);
+}
+.grid-item {
+  width: 25%;
+}
+.icon-item {
+  padding-top: 100%;
+  background-size: auto 25%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-right: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--color-light-gray);
+}
+/deep/ .highlight {
+  display: inline-block;
+  color: var(--color-blue);
+  background: white;
+  padding: 2px 2px;
+  border: solid 1px var(--color-light-gray);
+  border-radius: 3px;
+}
+/deep/ .base-paragraph {
+  line-height: 1.6em;
 }
 </style>

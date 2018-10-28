@@ -3,30 +3,31 @@
     <div class="columns-container">
       <div ref="column-item" class="column-item" v-for="n in columns" :key="n"/>
     </div>
-    <BaseTitle class="title-item" v-place-title text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/>
+    <!-- <BaseTitle class="intro-item" v-place-title text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/> -->
     <div class="project-item" v-masonarise v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
-      <BaseBrowserMockup :image-path="project.imagePath"/>
-      <div class="project-title" v-html="project.title"/>
-      <div class="project-subtitle" v-html="project.subtitle"/>
+      <div class="title-container">
+        <div class="title-item" v-html="project.title"/>
+        <div class="inline-separator">&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</div>
+        <div class="role-item" v-html="project.role"/>
+      </div>
+      <BaseBrowser :image-path="project.imagePath"/>
     </div>
   </div>
 </template>
 
 <script>
 import BaseTitle from '@/components/BaseTitle/BaseTitle'
-import BaseSubtitle from '@/components/BaseSubtitle/BaseSubtitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
-import BaseBrowserMockup from '@/components/BaseBrowserMockup/BaseBrowserMockup'
+import BaseBrowser from '@/components/BaseBrowser/BaseBrowser'
 import imagesLoaded from 'imagesloaded'
-import { TweenMax, Power4 } from 'gsap'
+import { TweenMax } from 'gsap'
 import { PROJECTS } from '@/constants'
 export default {
   name: 'projects',
   components: {
     BaseTitle,
-    BaseSubtitle,
     BaseParagraph,
-    BaseBrowserMockup
+    BaseBrowser
   },
   data () {
     return {
@@ -48,7 +49,7 @@ export default {
           })
           suitableColumn.appendChild(el)
           el.style.display = 'block'
-          TweenMax.to(el, 0.5, {autoAlpha: 1, ease: Power4.easeInOut})
+          TweenMax.set(el, {autoAlpha: 1})
         })
       }
     },
@@ -74,9 +75,9 @@ export default {
   width: 100%;
 }
 .column-item {
-  width: 45%;
+  width: calc(50% - 50px);
 }
-.title-item {
+.intro-item {
   margin-bottom: 100px;
 }
 .project-item {
@@ -85,15 +86,20 @@ export default {
   margin-bottom: 100px;
   cursor: pointer;
 }
-.base-browser-mockup {
+.title-container {
+  display: flex;
+  flex-flow: row wrap;
   margin-bottom: 20px;
+  font-size: 1.2em;
+  align-items: center;
+  white-space: nowrap;
 }
-.project-title {
-  font-size: 1.25em;
-  margin-bottom: 10px;
+.inline-separator {
+  font-size: 0.5em;
+  color: var(--color-medium-gray);
 }
-.project-subtitle {
-  font-size: 1em;
-  opacity: 0.5;
+.role-item {
+  color: var(--color-medium-gray);
+  font-size: 0.9em;
 }
 </style>

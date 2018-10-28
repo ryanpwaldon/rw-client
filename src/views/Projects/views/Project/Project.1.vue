@@ -1,15 +1,14 @@
 <template>
   <div class="project">
-    <BaseTitle :text="project.title"/>
-    <div class="content-container">
-      <div class="intro-container">
-        <BaseParagraph>{{ project.description }}</BaseParagraph>
-      </div>
-      <div class="spacer"/>
-      <Sidebar :project="project"/>
+    <div class="intro-container">
+      <BaseTitle :text="project.title"/>
+      <BaseParagraph>{{ project.description }}</BaseParagraph>
     </div>
-    <div class="image-container">
-      <div class="image-item" :style="{backgroundImage: `url(${project.imagePath})`}"/>
+    <div class="content-container">
+      <div class="image-container">
+        <img class="image-item" :src="project.imagePath">
+      </div>
+      <Sidebar :project="project"/>
     </div>
   </div>
 </template>
@@ -40,31 +39,25 @@ export default {
   height: 100%;
 }
 .base-title {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+}
+.intro-container {
+  margin-bottom: 80px;
 }
 .content-container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 80px;
-}
-.spacer {
-  width: 10%;
-  flex-shrink: 0;
 }
 .image-container {
   border: solid var(--color-light-gray) 1px;
   border-radius: 3px;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 .image-item {
-  padding-top: 80%;
-  border-radius: 3px;
+  width: 100%;
   height: auto;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: var(--color-white);
+  border-radius: 3px;
 }
 </style>

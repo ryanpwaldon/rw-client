@@ -9,7 +9,7 @@ for (const project of PROJECTS) {
     component: () => import('@/views/Projects/views/Project/Project'),
     props: { project },
     meta: {
-      layout: 'Main',
+      layout: 'User',
       accessLevel: 1
     }
   })

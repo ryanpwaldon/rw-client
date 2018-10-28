@@ -34,12 +34,16 @@ export default {
 <style lang="scss" scoped>
 .base-nav {
   width: 100%;
+  background: var(--color-white);
+  border-bottom: solid 1px var(--color-light-gray);
+  padding: 10px 30px;
 }
 .nav-container {
-  margin-bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
 }
 .nav-group-left {
   width: 100%;

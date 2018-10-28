@@ -17,6 +17,5 @@ export default {
 .base-title {
   font-size: 2em;
   line-height: 1.5em;
-  margin-bottom: 50px;
 }
 </style>

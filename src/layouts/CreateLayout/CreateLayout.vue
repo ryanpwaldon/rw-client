@@ -13,7 +13,7 @@ export default {
     layout () {
       return this.$route.meta.layout
         ? LAYOUTS[this.$route.meta.layout]
-        : LAYOUTS['Default']
+        : LAYOUTS['Blank']
     }
   }
 }

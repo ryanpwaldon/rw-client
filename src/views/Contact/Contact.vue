@@ -6,13 +6,11 @@
 
 <script>
 import BaseTitle from '@/components/BaseTitle/BaseTitle'
-import BaseSubtitle from '@/components/BaseSubtitle/BaseSubtitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
 export default {
   name: 'contact',
   components: {
     BaseTitle,
-    BaseSubtitle,
     BaseParagraph
   }
 }
