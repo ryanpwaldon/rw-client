@@ -32,4 +32,9 @@ export default {
   flex-direction: column;
   background: var(--color-lighter-gray);
 }
+.base-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
 </style>
