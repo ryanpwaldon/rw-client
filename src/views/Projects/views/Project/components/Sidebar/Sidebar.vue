@@ -70,6 +70,6 @@ export default {
   }
 }
 .item-value {
-  color: var(--color-gray);
+  color: var(--color-medium-gray);
 }
 </style>

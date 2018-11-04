@@ -85,6 +85,9 @@ export default {
   flex-direction: column;
   margin-bottom: 100px;
   cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 .title-container {
   display: flex;

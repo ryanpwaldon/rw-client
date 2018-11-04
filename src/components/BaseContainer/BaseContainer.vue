@@ -26,5 +26,6 @@ export default {}
   min-height: 100%;
   max-width: 900px;
   position: relative;
+  display: flex;
 }
 </style>

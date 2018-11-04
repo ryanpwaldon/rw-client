@@ -16,8 +16,6 @@ export default {
 <style lang="scss" scoped>
 .base-footer {
   width: 100%;
-  background: var(--color-white);
-  border-top: solid 1px var(--color-light-gray);
 }
 .footer-container {
   display: flex;
@@ -26,5 +24,7 @@ export default {
   max-width: 900px;
   margin: auto;
   height: 66px;
+  border-top: solid 1px var(--color-light-gray);
+  padding: 10px 30px;
 }
 </style>

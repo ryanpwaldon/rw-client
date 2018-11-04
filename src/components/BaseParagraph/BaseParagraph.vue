@@ -13,7 +13,7 @@ export default {
 .base-paragraph {
   font-size: 1em;
   line-height: 1.4em;
-  color: var(--color-dark-gray);
+  color: var(--color-gray);
   display: inline-block;
 }
 </style>

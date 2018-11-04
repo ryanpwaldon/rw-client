@@ -82,10 +82,10 @@ export default {
 }
 .image-frame {
   width: 100%;
+  border-radius: 3px;
   position: relative;
-  border-top: solid var(--color-light-gray) 1px;
-  border-bottom: solid var(--color-light-gray) 1px;
-  background: white;
+  border: solid var(--color-light-gray) 1px;
+  background: repeating-linear-gradient(-55deg, var(--color-light-gray), var(--color-light-gray) 1px, var(--color-white) 1px, var(--color-white) 8px);
 }
 .image-container {
   padding-top: 80%;
