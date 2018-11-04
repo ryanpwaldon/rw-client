@@ -1,9 +1,9 @@
 <template>
   <div class="base-footer">
     <div class="footer-container">
-      <div class="content-item">
+      <a class="content-item" href="https://github.com/ryanpwaldon/rynpw-client" target="_blank">
         View this site on github.
-      </div>
+      </a>
     </div>
   </div>
 </template>
