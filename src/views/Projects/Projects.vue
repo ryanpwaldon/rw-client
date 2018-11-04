@@ -3,8 +3,7 @@
     <div class="columns-container">
       <div ref="column-item" class="column-item" v-for="n in columns" :key="n"/>
     </div>
-    <!-- <BaseTitle class="intro-item" v-place-title text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/> -->
-    <div class="project-item" v-masonarise v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
+    <div class="project-item" ref="project-item" v-masonarise v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
       <div class="title-container">
         <div class="title-item" v-html="project.title"/>
         <div class="inline-separator">&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</div>
@@ -20,7 +19,6 @@ import BaseTitle from '@/components/BaseTitle/BaseTitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
 import BaseBrowser from '@/components/BaseBrowser/BaseBrowser'
 import imagesLoaded from 'imagesloaded'
-import { TweenMax } from 'gsap'
 import { PROJECTS } from '@/constants'
 export default {
   name: 'projects',
@@ -39,17 +37,21 @@ export default {
     masonarise: {
       inserted (el, binding, vnode) {
         el.style.display = 'none'
-        el.style.visibility = 'hidden'
-        imagesLoaded(el, () => {
-          // find column with shortest height (or if equal, the left most column)
-          const suitableColumn = vnode.context.$refs['column-item'].reduce((acc, column) => {
-            if (vnode.key === 2) console.log(acc.children.length, column.children.length)
-            if (column.offsetHeight === acc.offsetHeight) return acc
-            return column.offsetHeight < acc.offsetHeight ? column : acc
+        // create promise to resolve once masonary element has been appended to column
+        el.inserted = new Promise((resolve, reject) => {
+          // wait for all preceding masonary elements to be appended before proceeding (to maintain order)
+          Promise.all(vnode.context.$refs['project-item'].slice(0, vnode.key).map(item => item.inserted)).then(() => {
+            imagesLoaded(el, () => {
+              // find column with shortest height (or if equal, the left most column)
+              const suitableColumn = vnode.context.$refs['column-item'].reduce((acc, column) => {
+                if (column.offsetHeight === acc.offsetHeight) return acc
+                return column.offsetHeight < acc.offsetHeight ? column : acc
+              })
+              suitableColumn.appendChild(el)
+              el.style.display = 'block'
+              resolve()
+            })
           })
-          suitableColumn.appendChild(el)
-          el.style.display = 'block'
-          TweenMax.set(el, {autoAlpha: 1})
         })
       }
     },
