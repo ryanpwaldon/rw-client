@@ -2,9 +2,7 @@
   <div class="user-layout">
     <BaseNav/>
     <BaseContainer>
-      <transition name="fade" mode="out-in">
-        <router-view :key="$route.path"/>
-      </transition>
+      <slot/>
     </BaseContainer>
     <BaseFooter/>
   </div>
@@ -15,7 +13,6 @@ import BaseContainer from '@/components/BaseContainer/BaseContainer'
 import BaseNav from '@/components/BaseNav/BaseNav'
 import BaseFooter from '@/components/BaseFooter/BaseFooter'
 export default {
-  name: 'user-layout',
   components: {
     BaseContainer,
     BaseNav,

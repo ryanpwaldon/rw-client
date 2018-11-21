@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import main from '@/main'
 import store from '@/store'
 import projectRoutes from '@/views/Projects/routes/routes'
 
@@ -8,6 +9,15 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise(resolve => {
+      main.$root.$once('beforeEnterTransition', () => {
+        savedPosition
+          ? resolve(savedPosition)
+          : resolve({ x: 0, y: 0 })
+      })
+    })
+  },
   routes: [
     {
       path: '/login',

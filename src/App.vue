@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <CreateLayout>
-      <transition name="fade" mode="out-in">
+      <transition name="fade" mode="out-in" @before-enter="$root.$emit('beforeEnterTransition')">
         <router-view :key="$route.path"/>
       </transition>
     </CreateLayout>
