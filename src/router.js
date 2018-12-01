@@ -9,15 +9,6 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  scrollBehavior (to, from, savedPosition) {
-    return new Promise(resolve => {
-      main.$root.$once('beforeEnterTransition', () => {
-        savedPosition
-          ? resolve(savedPosition)
-          : resolve({ x: 0, y: 0 })
-      })
-    })
-  },
   routes: [
     {
       path: '/login',
@@ -62,7 +53,14 @@ const router = new Router({
       path: '*',
       redirect: '/'
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise(resolve => {
+      main.$root.$once('triggerScroll', () => {
+        resolve(savedPosition || { x: 0, y: 0 })
+      })
+    })
+  }
 })
 
 router.beforeEach((to, from, next) => {

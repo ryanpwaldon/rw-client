@@ -10,17 +10,14 @@
       <div class="spacer"/>
       <Sidebar :project="project"/>
     </div>
-    <div class="image-frame">
-      <div class="image-container">
-        <img class="image-item" :src="project.imagePath">
-      </div>
-    </div>
+    <BaseCarousel :image-paths="project.images"/>
   </div>
 </template>
 
 <script>
 import BaseTitle from '@/components/BaseTitle/BaseTitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
+import BaseCarousel from '@/components/BaseCarousel/BaseCarousel'
 import Sidebar from './components/Sidebar/Sidebar'
 export default {
   name: 'project',
@@ -33,6 +30,7 @@ export default {
   components: {
     BaseTitle,
     BaseParagraph,
+    BaseCarousel,
     Sidebar
   }
 }

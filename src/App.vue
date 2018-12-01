@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <CreateLayout>
-      <transition name="fade" mode="out-in" @before-enter="$root.$emit('beforeEnterTransition')">
+      <transition name="fade" mode="out-in" @before-enter="$root.$emit('triggerScroll')">
         <router-view :key="$route.path"/>
       </transition>
     </CreateLayout>

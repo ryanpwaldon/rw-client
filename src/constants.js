@@ -12,6 +12,32 @@ export const LAYOUTS = {
 
 export const PROJECTS = [
   {
+    title: 'Ayers Rock',
+    client: 'Voyages',
+    role: 'Sole developer',
+    type: 'Single page website',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+    path: 'ayers-rock',
+    imagePath: require('@/views/Projects/views/Project/assets/ayers-rock/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
+    links: {
+      sitePath: 'https://discover.qantasbusinessrewards.com',
+      githubPath: 'https://discover.qantasbusinessrewards.com'
+    },
+    tools: [
+      'Vue',
+      'Node + Express',
+      'MongoDB',
+      'GSAP',
+      'Mapbox',
+      'Angular'
+    ]
+  },
+  {
     title: 'Digikit',
     client: 'Raine & Horne',
     role: 'Co developer',
@@ -20,6 +46,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'appraisal-cms',
     imagePath: require('@/views/Projects/views/Project/assets/appraisal-cms/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'https://discover.qantasbusinessrewards.com',
       githubPath: 'https://discover.qantasbusinessrewards.com'
@@ -42,6 +72,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'win-qantas-points',
     imagePath: require('@/views/Projects/views/Project/assets/win-qantas-points/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'https://discover.qantasbusinessrewards.com',
       githubPath: 'https://discover.qantasbusinessrewards.com'
@@ -64,6 +98,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'homebrowse',
     imagePath: require('@/views/Projects/views/Project/assets/homebrowse/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'http://homebrowse-vue-client.herokuapp.com/search',
       githubPath: 'http://homebrowse-vue-client.herokuapp.com/search'
@@ -86,6 +124,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'mapbox-sydney',
     imagePath: require('@/views/Projects/views/Project/assets/mapbox-sydney/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'https://discover.qantasbusinessrewards.com',
       githubPath: 'https://discover.qantasbusinessrewards.com'
@@ -108,6 +150,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'flight-tracker',
     imagePath: require('@/views/Projects/views/Project/assets/flight-tracker/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'https://discover.qantasbusinessrewards.com',
       githubPath: 'https://discover.qantasbusinessrewards.com'
@@ -130,28 +176,10 @@ export const PROJECTS = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
     path: 'skateboard-builder',
     imagePath: require('@/views/Projects/views/Project/assets/skateboard-builder/thumbnail.png'),
-    links: {
-      sitePath: 'https://discover.qantasbusinessrewards.com',
-      githubPath: 'https://discover.qantasbusinessrewards.com'
-    },
-    tools: [
-      'Vue',
-      'Node + Express',
-      'MongoDB',
-      'GSAP',
-      'Mapbox',
-      'Angular'
-    ]
-  },
-  {
-    title: 'Ayers Rock',
-    client: 'Voyages',
-    role: 'Sole developer',
-    type: 'Single page website',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
-    path: 'ayers-rock',
-    imagePath: require('@/views/Projects/views/Project/assets/ayers-rock/thumbnail.png'),
+    images: [
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/1.png'),
+      require('@/views/Projects/views/Project/assets/ayers-rock/images/2.png')
+    ],
     links: {
       sitePath: 'https://discover.qantasbusinessrewards.com',
       githubPath: 'https://discover.qantasbusinessrewards.com'

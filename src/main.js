@@ -5,6 +5,7 @@ import store from './store'
 import '@/assets/css/index.scss'
 
 Vue.config.productionTip = false
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
 
 export default new Vue({
   router,
