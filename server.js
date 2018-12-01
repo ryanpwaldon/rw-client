@@ -1,5 +1,6 @@
-const express = require('express')
 const path = require('path')
+const enforce = require('express-sslify')
+const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
 app.use(enforce.HTTPS({ trustProtoHeader: true }))
