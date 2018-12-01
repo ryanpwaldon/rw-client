@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "heroku-postbuild": "yarn build",
-    "start": "http-server dist/index"
+    "start": "http-server dist/index.html"
   },
   "dependencies": {
     "vue": "^2.5.17",
