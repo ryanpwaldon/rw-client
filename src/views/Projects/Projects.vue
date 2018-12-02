@@ -1,6 +1,7 @@
 <template>
   <div class="projects">
-    <div class="columns-container">
+    <BaseLoader ref="base-loader"/>
+    <div class="columns-container" ref="columns-container">
       <div ref="column-item" class="column-item" v-for="n in columns" :key="n"/>
     </div>
     <div class="project-item" ref="project-item" v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
@@ -15,28 +16,47 @@
 </template>
 
 <script>
+import { TweenMax } from 'gsap'
+import BaseLoader from '@/components/BaseLoader/BaseLoader'
 import BaseBrowser from '@/components/BaseBrowser/BaseBrowser'
 import imagesLoaded from 'imagesloaded'
 import { PROJECTS } from '@/constants'
 export default {
   name: 'projects',
   components: {
+    BaseLoader,
     BaseBrowser
-  },
-  data () {
-    return {
-      projects: PROJECTS,
-      columns: 2
-    }
   },
   mounted () {
     this.masonarize()
+    this.manageContainerVisibility()
     window.addEventListener('resize', this.updateColumns, { passive: true })
   },
   destroyed () {
     window.removeEventListener('resize', this.updateColumns)
   },
+  data () {
+    return {
+      columns: 2,
+      projects: PROJECTS
+    }
+  },
   methods: {
+    manageContainerVisibility () {
+      const baseLoader = this.$refs['base-loader'].$el
+      const columnsContainer = this.$refs['columns-container']
+      TweenMax.set(columnsContainer, {position: 'absolute', autoAlpha: 0})
+      Promise.all(this.$refs['project-item'].map(item => item.inserted)).then(() => {
+        TweenMax.to(baseLoader, 0.2, {
+          autoAlpha: 0,
+          onComplete: () => {
+            TweenMax.set(baseLoader, {display: 'none'})
+            TweenMax.set(columnsContainer, {position: 'relative'})
+            TweenMax.to(columnsContainer, 0.2, {autoAlpha: 1})
+          }
+        })
+      })
+    },
     masonarize () {
       for (const [index, el] of this.$refs['project-item'].entries()) {
         el.style.display = 'none'
@@ -72,7 +92,6 @@ export default {
 <style lang="scss" scoped>
 .projects {
   width: 100%;
-  height: 100%;
 }
 .columns-container {
   display: flex;
