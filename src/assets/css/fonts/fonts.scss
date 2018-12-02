@@ -1,1 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700')
+@font-face {
+  font-family: 'CircularStd-Book';
+  src: url('../font/CircularStd-Book.eot'); /* IE9 Compat Modes */
+  src: url('../font/CircularStd-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../font/CircularStd-Book.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../font/CircularStd-Book.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../font/CircularStd-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../font/CircularStd-Book.svg') format('svg'); /* Legacy iOS */
+}
