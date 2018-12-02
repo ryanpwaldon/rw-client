@@ -19,19 +19,18 @@ import BaseTitle from '@/components/BaseTitle/BaseTitle'
 import BaseParagraph from '@/components/BaseParagraph/BaseParagraph'
 import BaseCarousel from '@/components/BaseCarousel/BaseCarousel'
 import Sidebar from './components/Sidebar/Sidebar'
+import { PROJECTS } from '@/constants'
 export default {
   name: 'project',
-  props: {
-    project: {
-      type: Object,
-      required: true
-    }
-  },
   components: {
     BaseTitle,
     BaseParagraph,
     BaseCarousel,
     Sidebar
+  },
+  created () {
+    this.project = PROJECTS.find(item => item.path === this.$route.params.project)
+    if (!this.project) this.$router.push('/')
   }
 }
 </script>

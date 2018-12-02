@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/main'
 import store from '@/store'
-import projectRoutes from '@/views/Projects/routes/routes'
 
 import Login from '@/views/Login/Login'
 import Home from '@/views/Home/Home'
 import Projects from '@/views/Projects/Projects'
+import Project from '@/views/Projects/views/Project/Project'
 import Contact from '@/views/Contact/Contact'
 import Register from '@/views/Register/Register'
 
@@ -39,7 +39,15 @@ const router = new Router({
         accessLevel: 1
       }
     },
-    ...projectRoutes,
+    {
+      path: '/projects/:project',
+      name: 'project',
+      component: Project,
+      meta: {
+        layout: 'User',
+        accessLevel: 1
+      }
+    },
     {
       path: '/contact',
       name: 'contact',
