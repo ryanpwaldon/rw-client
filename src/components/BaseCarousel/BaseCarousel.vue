@@ -67,7 +67,6 @@ export default {
   width: 100%;
   position: relative;
   border: solid 1px var(--color-light-gray);
-  border-radius: 25px;
   overflow: hidden;
   background: white;
   &:hover .button { opacity: 1; }
