@@ -30,6 +30,7 @@ export default {
   mounted () {
     this.masonarize()
     this.manageContainerVisibility()
+    this.updateColumns()
     window.addEventListener('resize', this.updateColumns, { passive: true })
   },
   destroyed () {
@@ -80,7 +81,7 @@ export default {
     },
     updateColumns () {
       const columns = this.columns
-      window.innerWidth <= 500
+      window.innerWidth <= 620
         ? this.columns = 1
         : this.columns = 2
       if (columns !== this.columns) this.masonarize()
