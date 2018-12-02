@@ -4,6 +4,12 @@ import main from '@/main'
 import store from '@/store'
 import projectRoutes from '@/views/Projects/routes/routes'
 
+import Login from '@/views/Login/Login'
+import Home from '@/views/Home/Home'
+import Projects from '@/views/Projects/Projects'
+import Contact from '@/views/Contact/Contact'
+import Register from '@/views/Register/Register'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -13,12 +19,12 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/Login/Login')
+      component: Login
     },
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home/Home'),
+      component: Home,
       meta: {
         layout: 'User',
         accessLevel: 1
@@ -27,7 +33,7 @@ const router = new Router({
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('@/views/Projects/Projects'),
+      component: Projects,
       meta: {
         layout: 'User',
         accessLevel: 1
@@ -37,7 +43,7 @@ const router = new Router({
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('@/views/Contact/Contact'),
+      component: Contact,
       meta: {
         layout: 'User',
         accessLevel: 1
@@ -46,7 +52,7 @@ const router = new Router({
     {
       path: '/register',
       name: 'register',
-      component: () => import('@/views/Register/Register'),
+      component: Register,
       meta: { accessLevel: 0 }
     },
     {
