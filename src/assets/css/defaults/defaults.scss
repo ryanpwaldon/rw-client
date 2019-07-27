@@ -32,3 +32,10 @@ a {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.slow-fade-enter-active, .slow-fade-leave-active {
+  transition: var(--slow-transition);
+}
+.slow-fade-enter, .slow-fade-leave-to {
+  opacity: 0;
+}

@@ -1,25 +1,30 @@
 <template>
   <div class="projects">
-    <BaseLoader ref="base-loader"/>
     <div class="columns-container" ref="columns-container">
-      <div ref="column-item" class="column-item" v-for="n in columns" :key="n"/>
-    </div>
-    <div class="project-item" ref="project-item" v-for="(project, index) in projects" :key="index" @click="$router.push({path: project.path, append: true})">
-      <div class="title-container">
-        <div class="title-item" v-html="project.title"/>
-        <div class="inline-separator">&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</div>
-        <div class="role-item" v-html="project.role"/>
+      <div ref="column-item" class="column-item" v-for="n in columns" :key="n">
+        <div
+          class="project-item"
+          ref="project-item"
+          v-for="(project, index) in projects"
+          v-if="(index + n - 1) % columns === 0"
+          @click="$router.push({path: project.path, append: true})"
+          :key="index"
+        >
+          <div class="title-container">
+            <div class="title-item" v-html="project.title"/>
+            <div class="inline-separator">&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</div>
+            <div class="role-item" v-html="project.role"/>
+          </div>
+          <BaseBrowser :image-path="project.imagePath"/>
+        </div>
       </div>
-      <BaseBrowser :image-path="project.imagePath"/>
     </div>
   </div>
 </template>
 
 <script>
-import { TweenMax } from 'gsap'
 import BaseLoader from '@/components/BaseLoader/BaseLoader'
 import BaseBrowser from '@/components/BaseBrowser/BaseBrowser'
-import imagesLoaded from 'imagesloaded'
 import { PROJECTS } from '@/constants'
 export default {
   name: 'projects',
@@ -28,9 +33,6 @@ export default {
     BaseBrowser
   },
   mounted () {
-    this.masonarize()
-    this.manageContainerVisibility()
-    this.updateColumns()
     window.addEventListener('resize', this.updateColumns, { passive: true })
   },
   destroyed () {
@@ -38,53 +40,15 @@ export default {
   },
   data () {
     return {
-      columns: 2,
-      projects: PROJECTS
+      projects: PROJECTS,
+      columns: 2
     }
   },
   methods: {
-    manageContainerVisibility () {
-      const baseLoader = this.$refs['base-loader'].$el
-      const columnsContainer = this.$refs['columns-container']
-      TweenMax.set(columnsContainer, {position: 'absolute', autoAlpha: 0})
-      Promise.all(this.$refs['project-item'].map(item => item.inserted)).then(() => {
-        TweenMax.to(baseLoader, 0.2, {
-          autoAlpha: 0,
-          onComplete: () => {
-            TweenMax.set(baseLoader, {display: 'none'})
-            TweenMax.set(columnsContainer, {position: 'relative'})
-            TweenMax.to(columnsContainer, 0.2, {autoAlpha: 1})
-          }
-        })
-      })
-    },
-    masonarize () {
-      for (const [index, el] of this.$refs['project-item'].entries()) {
-        el.style.display = 'none'
-        // create promise to resolve once masonary element has been appended to column
-        el.inserted = new Promise((resolve, reject) => {
-          // wait for all preceding masonary elements to be appended before proceeding (to maintain order)
-          Promise.all(this.$refs['project-item'].slice(0, index).map(item => item.inserted)).then(() => {
-            imagesLoaded(el, () => {
-              // find column with shortest height (or if equal, the left most column)
-              const suitableColumn = this.$refs['column-item'].reduce((acc, column) => {
-                if (column.offsetHeight === acc.offsetHeight) return acc
-                return column.offsetHeight < acc.offsetHeight ? column : acc
-              })
-              suitableColumn.appendChild(el)
-              el.style.display = 'block'
-              resolve()
-            })
-          })
-        })
-      }
-    },
     updateColumns () {
-      const columns = this.columns
       window.innerWidth <= 620
         ? this.columns = 1
         : this.columns = 2
-      if (columns !== this.columns) this.masonarize()
     }
   }
 }
